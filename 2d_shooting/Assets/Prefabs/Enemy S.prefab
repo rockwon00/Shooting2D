@@ -139,3 +139,11 @@ MonoBehaviour:
   sprites:
   - {fileID: 8414478535512612329, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
   - {fileID: 4326287474489854147, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
+  enemyName: S
+  bulletObjA: {fileID: 6010415613442865123, guid: 3923b654da7de0440901d481c7f6b2c0,
+    type: 3}
+  bulletObjB: {fileID: 6010415613442865123, guid: 909c39f07b751d2458a93c1755a7679c,
+    type: 3}
+  player: {fileID: 0}
+  maxShotDelay: 4
+  curShotDelay: 0

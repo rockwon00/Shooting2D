@@ -7,6 +7,15 @@ public class Enemy : MonoBehaviour
     public float speed;
     public float health;
     public Sprite[] sprites;
+    public string enemyName;
+
+
+    public GameObject bulletObjA;
+    public GameObject bulletObjB;
+    public GameObject player;
+
+    public float maxShotDelay;
+    public float curShotDelay;
 
     SpriteRenderer spriteRenderer;
     //Rigidbody2D rigid;
@@ -17,6 +26,52 @@ public class Enemy : MonoBehaviour
         //rigid = GetComponent<Rigidbody2D>();
         //rigid.velocity = Vector2.down * speed;
     }
+
+    void Update()
+    {
+        Fire();
+        Reload();
+    }
+
+    void Fire()
+    {
+       
+
+        if (curShotDelay < maxShotDelay)
+            return;
+
+        if (enemyName == "S")
+        {
+            GameObject bullet = Instantiate(bulletObjA, transform.position, transform.rotation);
+            Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
+
+            Vector3 dirVec = player.transform.position - transform.position;
+            //목표물로 방향 = 목표물 위치 - 자신의 위치
+            rigid.AddForce(dirVec * 10, ForceMode2D.Impulse);
+        }
+        else if (enemyName == "L")
+        {
+            GameObject bulletR = Instantiate(bulletObjB, transform.position + Vector3.right*0.3f, transform.rotation);
+            GameObject bulletL = Instantiate(bulletObjB, transform.position + Vector3.left* 0.3f, transform.rotation);
+            
+            Rigidbody2D rigidR = bulletR.GetComponent<Rigidbody2D>();
+            Rigidbody2D rigidL = bulletL.GetComponent<Rigidbody2D>();
+
+            Vector3 dirVecR = player.transform.position - transform.position;
+            Vector3 dirVecL = player.transform.position - transform.position;
+
+            rigidR.AddForce(dirVecR.normalized * 10, ForceMode2D.Impulse);
+            rigidL.AddForce(dirVecL.normalized * 10, ForceMode2D.Impulse);
+        }
+ 
+        curShotDelay = 0;
+    }
+
+    void Reload()
+    {
+        curShotDelay += Time.deltaTime;
+    }
+
 
     void OnHit(int dmg)
     {

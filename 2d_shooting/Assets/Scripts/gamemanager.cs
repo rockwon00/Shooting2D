@@ -11,6 +11,8 @@ public class gamemanager : MonoBehaviour
     public float maxSpawnDelay;
     public float curSpawnDelay;
 
+    public GameObject player;
+
     void Update()
     {
         curSpawnDelay = curSpawnDelay + Time.deltaTime;
@@ -31,6 +33,8 @@ public class gamemanager : MonoBehaviour
             spawnPoints[ranPoint].rotation);
         Rigidbody2D rigid = enemy.GetComponent<Rigidbody2D>();
         Enemy enemyLogic = enemy.GetComponent<Enemy>();
+        enemyLogic.player = player; //적 생성이 된 직후이기 때문에 플레이어 변수를 넘겨주는것이 가능함 
+
         if (ranPoint == 5 || ranPoint == 6)
         {
             rigid.velocity = new Vector2(enemyLogic.speed * (1), -1);

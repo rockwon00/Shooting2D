@@ -452,6 +452,7 @@ MonoBehaviour:
   spawnPoints: []
   maxSpawnDelay: 0
   curSpawnDelay: 0
+  player: {fileID: 0}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -525,6 +526,7 @@ MonoBehaviour:
   spawnPoints: []
   maxSpawnDelay: 0
   curSpawnDelay: 0
+  player: {fileID: 0}
 --- !u!1 &526755610
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,6 +681,7 @@ MonoBehaviour:
   - {fileID: 1486559826}
   maxSpawnDelay: 2
   curSpawnDelay: 0
+  player: {fileID: 1399186662}
 --- !u!4 &822202473
 Transform:
   m_ObjectHideFlags: 0
