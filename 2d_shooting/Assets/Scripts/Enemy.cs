@@ -47,7 +47,7 @@ public class Enemy : MonoBehaviour
 
             Vector3 dirVec = player.transform.position - transform.position;
             //목표물로 방향 = 목표물 위치 - 자신의 위치
-            rigid.AddForce(dirVec * 10, ForceMode2D.Impulse);
+            rigid.AddForce(dirVec.normalized * 3, ForceMode2D.Impulse);
         }
         else if (enemyName == "L")
         {
@@ -60,8 +60,8 @@ public class Enemy : MonoBehaviour
             Vector3 dirVecR = player.transform.position - transform.position;
             Vector3 dirVecL = player.transform.position - transform.position;
 
-            rigidR.AddForce(dirVecR.normalized * 10, ForceMode2D.Impulse);
-            rigidL.AddForce(dirVecL.normalized * 10, ForceMode2D.Impulse);
+            rigidR.AddForce(dirVecR.normalized * 5, ForceMode2D.Impulse);
+            rigidL.AddForce(dirVecL.normalized * 5, ForceMode2D.Impulse);
         }
  
         curShotDelay = 0;

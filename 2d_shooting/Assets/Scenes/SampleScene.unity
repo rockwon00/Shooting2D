@@ -1290,6 +1290,7 @@ MonoBehaviour:
     type: 3}
   bulletObjB: {fileID: 6010415613442865123, guid: 909c39f07b751d2458a93c1755a7679c,
     type: 3}
+  manager: {fileID: 822202472}
 --- !u!212 &1399186664
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -50,5 +50,16 @@ public class gamemanager : MonoBehaviour
             rigid.velocity = new Vector2(0, enemyLogic.speed * (-1));
         }
     }
+    
+    public void RespwanPlayer()
+    {
+        Invoke("RespwanplayerExe", 2f);
+    }    
+
+    void RespwanplayerExe()
+    {
+        player.transform.position = Vector3.down * 3.5f;
+        player.SetActive(true);
+    }
 }
 
