@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class gamemanager : MonoBehaviour
@@ -12,6 +14,9 @@ public class gamemanager : MonoBehaviour
     public float curSpawnDelay;
 
     public GameObject player;
+    public Text scoreText;
+    public Image[] lifeImage;
+    public GameObject gameOverSet;
 
     void Update()
     {
@@ -22,7 +27,11 @@ public class gamemanager : MonoBehaviour
             maxSpawnDelay = Random.Range(0.5f, 3f);
             curSpawnDelay = 0;
         }
-    }
+
+        //#.UI Score Update
+        Player playerLogic = player.GetComponent<Player>();
+        scoreText.text = string.Format("{0:n0}", playerLogic.score);
+    } 
 
     void SpawnEnemy()
     {
@@ -50,7 +59,21 @@ public class gamemanager : MonoBehaviour
             rigid.velocity = new Vector2(0, enemyLogic.speed * (-1));
         }
     }
-    
+
+    public void UpdateLifeIcon(int life)
+    {
+        //Image를 일단 모두 투명 상태로 두고
+        for (int index = 0; index < 3; index++)
+        {
+            lifeImage[index].color = new Color(1, 1, 1, 0);
+        }
+        //목숨대로 반투명 설정
+        for (int index = 0; index < life; index++)
+        {
+            lifeImage[index].color = new Color(1, 1, 1, 1);
+        }
+    }
+
     public void RespwanPlayer()
     {
         Invoke("RespwanplayerExe", 2f);
@@ -60,6 +83,19 @@ public class gamemanager : MonoBehaviour
     {
         player.transform.position = Vector3.down * 3.5f;
         player.SetActive(true);
+
+        Player playerLogic = player.GetComponent<Player>();
+        playerLogic.isHit = false;
+    }
+
+    public void GameOver()
+    {
+        gameOverSet.SetActive(true);
+    }
+
+    public void GameRetry()
+    {
+        SceneManager.LoadScene(0);
     }
 }
 

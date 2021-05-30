@@ -155,6 +155,7 @@ MonoBehaviour:
   - {fileID: -1147401495359466748, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
   - {fileID: -7844560889915226194, guid: 138040323294fd440a3a823e5d70ad01, type: 3}
   enemyName: M
+  enemyScore: 50
   bulletObjA: {fileID: 6010415613442865123, guid: 3923b654da7de0440901d481c7f6b2c0,
     type: 3}
   bulletObjB: {fileID: 6010415613442865123, guid: 909c39f07b751d2458a93c1755a7679c,

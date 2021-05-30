@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public float health;
     public Sprite[] sprites;
     public string enemyName;
+    public int enemyScore;
 
 
     public GameObject bulletObjA;
@@ -81,7 +82,11 @@ public class Enemy : MonoBehaviour
 
         if(health <= 0)
         {
+            Player playerLogic = player.GetComponent<Player>();
+            playerLogic.score += enemyScore;
+            //적기가 파괴되면 플레이어에게 점수를 넘겨주어야함
             Destroy(gameObject);
+            
         }
     }
 
