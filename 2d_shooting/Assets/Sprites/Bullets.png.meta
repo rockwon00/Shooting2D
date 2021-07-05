@@ -4,25 +4,25 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 874343242196921964
-    second: Bullets_0
+    second: Player Bullet 1
   - first:
       213: -7976837497307082302
-    second: Bullets_0
+    second: Player Bullet 1
   - first:
       213: -7803065417098437583
-    second: Bullets_2
+    second: Follower Bullet
   - first:
       213: 7431529995326980795
-    second: Bullets_3
+    second: Enemy Bullet 0
   - first:
       213: -7779215486825634471
-    second: Bullets_4
+    second: Enemy Bullet 1
   - first:
       213: 830317617348258784
-    second: Bullets_5
+    second: Enemy Bullet 2
   - first:
       213: 6112890488319390909
-    second: Bullets_6
+    second: Enemy Bullet 3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -132,7 +132,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bullets_0
+      name: Player Bullet 0
       rect:
         serializedVersion: 2
         x: 3
@@ -140,20 +140,20 @@ TextureImporter:
         width: 4
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6e29eadb8a422c00800000000000000
+      spriteID: 8dccaf8c3e226a0428f7e896381ac92a
       internalID: 874343242196921964
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bullets_1
+      name: Player Bullet 1
       rect:
         serializedVersion: 2
         x: 12
@@ -161,20 +161,20 @@ TextureImporter:
         width: 8
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c1defd2f849c4190800000000000000
+      spriteID: 9cc2ab879b914f4458dd7f4dc3ba118a
       internalID: -7976837497307082302
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bullets_2
+      name: Follower Bullet
       rect:
         serializedVersion: 2
         x: 25
@@ -182,20 +182,20 @@ TextureImporter:
         width: 4
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13c56b67851f5b390800000000000000
+      spriteID: 08736399e57566a46aada98c4619dd7f
       internalID: -7803065417098437583
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bullets_3
+      name: Enemy Bullet 0
       rect:
         serializedVersion: 2
         x: 35
@@ -203,20 +203,20 @@ TextureImporter:
         width: 6
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb200252829122760800000000000000
+      spriteID: 5ac75827b2750c44ba8121a16bc838fb
       internalID: 7431529995326980795
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bullets_4
+      name: Enemy Bullet 1
       rect:
         serializedVersion: 2
         x: 46
@@ -224,20 +224,20 @@ TextureImporter:
         width: 6
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9556a841bbcaa0490800000000000000
+      spriteID: 238b27ef20d455d48841f73f87df4f92
       internalID: -7779215486825634471
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bullets_5
+      name: Enemy Bullet 2
       rect:
         serializedVersion: 2
         x: 58
@@ -245,20 +245,20 @@ TextureImporter:
         width: 4
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ebaac84971e58b00800000000000000
+      spriteID: ce9f36515b768434887b9d71b078c811
       internalID: 830317617348258784
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bullets_6
+      name: Enemy Bullet 3
       rect:
         serializedVersion: 2
         x: 66
@@ -266,13 +266,13 @@ TextureImporter:
         width: 10
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db4342bf28955d450800000000000000
+      spriteID: b2f8ee3afc0d1a048b9b62f2060d118a
       internalID: 6112890488319390909
       vertices: []
       indices: 

@@ -13,6 +13,9 @@ public class Enemy : MonoBehaviour
 
     public GameObject bulletObjA;
     public GameObject bulletObjB;
+    public GameObject itemCoin;
+    public GameObject itemPower;
+    public GameObject itemBoom;
     public GameObject player;
 
     public float maxShotDelay;
@@ -85,6 +88,29 @@ public class Enemy : MonoBehaviour
             Player playerLogic = player.GetComponent<Player>();
             playerLogic.score += enemyScore;
             //적기가 파괴되면 플레이어에게 점수를 넘겨주어야함
+
+            //#.랜덤으로 아이템 드랍
+            int ran = Random.Range(0, 10);
+            if(ran<3) //30%
+            {
+                Debug.Log("꽝");
+            }
+            else if (ran < 6) //30%
+            {
+                //코인
+                Instantiate(itemCoin, transform.position, itemCoin.transform.rotation);
+            }
+            else if (ran < 8) //20%
+            {
+                //파워
+                Instantiate(itemPower, transform.position, itemPower.transform.rotation);
+            }
+            else if (ran < 10) //20%
+            {
+                //폭탄
+                Instantiate(itemBoom, transform.position, itemBoom.transform.rotation);
+            }
+
             Destroy(gameObject);
             
         }

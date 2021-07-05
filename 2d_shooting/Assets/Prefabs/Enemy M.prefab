@@ -160,6 +160,12 @@ MonoBehaviour:
     type: 3}
   bulletObjB: {fileID: 6010415613442865123, guid: 909c39f07b751d2458a93c1755a7679c,
     type: 3}
+  itemCoin: {fileID: 7276621905164920302, guid: 800c6111ac7c15540a31b0bb318de8d6,
+    type: 3}
+  itemPower: {fileID: 4432290240239023088, guid: fdc27f7a20cb82744973684f6b2f1011,
+    type: 3}
+  itemBoom: {fileID: 2702497711327123985, guid: 67052f621b2a98f4b9ad6b4ec86fa041,
+    type: 3}
   player: {fileID: 0}
   maxShotDelay: 4
   curShotDelay: 0
