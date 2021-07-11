@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour
     public GameObject itemPower;
     public GameObject itemBoom;
     public GameObject player;
+    //#.Enemy같은 경우는 프리펩이기 때문에 바로 매니저를 끌고 올수가 없다
+    public ObjectManager objectManager;
 
     public float maxShotDelay;
     public float curShotDelay;
@@ -46,7 +48,9 @@ public class Enemy : MonoBehaviour
 
         if (enemyName == "S")
         {
-            GameObject bullet = Instantiate(bulletObjA, transform.position, transform.rotation);
+            GameObject bullet = objectManager.MakeObj("BulleteEnemyA");
+            bullet.transform.position = transform.position;
+            //GameObject bullet = Instantiate(bulletObjA, transform.position, transform.rotation);
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
 
             Vector3 dirVec = player.transform.position - transform.position;
@@ -55,9 +59,13 @@ public class Enemy : MonoBehaviour
         }
         else if (enemyName == "L")
         {
-            GameObject bulletR = Instantiate(bulletObjB, transform.position + Vector3.right*0.3f, transform.rotation);
-            GameObject bulletL = Instantiate(bulletObjB, transform.position + Vector3.left* 0.3f, transform.rotation);
-            
+            GameObject bulletR = objectManager.MakeObj("BulleteEnemyB");
+            bulletR.transform.position = transform.position + Vector3.right * 0.3f;
+            GameObject bulletL = objectManager.MakeObj("BulleteEnemyB");
+            bulletL.transform.position = transform.position + Vector3.left * 0.3f;
+            //GameObject bulletR = Instantiate(bulletObjB, transform.position + Vector3.right*0.3f, transform.rotation);
+            //GameObject bulletL = Instantiate(bulletObjB, transform.position + Vector3.left* 0.3f, transform.rotation);
+
             Rigidbody2D rigidR = bulletR.GetComponent<Rigidbody2D>();
             Rigidbody2D rigidL = bulletL.GetComponent<Rigidbody2D>();
 
@@ -98,20 +106,27 @@ public class Enemy : MonoBehaviour
             else if (ran < 6) //30%
             {
                 //코인
-                Instantiate(itemCoin, transform.position, itemCoin.transform.rotation);
+                GameObject itemCoin = objectManager.MakeObj("ItemCoin");
+                itemCoin.transform.position = transform.position;
+                //Instantiate(itemCoin, transform.position, itemCoin.transform.rotation);
             }
             else if (ran < 8) //20%
             {
                 //파워
-                Instantiate(itemPower, transform.position, itemPower.transform.rotation);
+                GameObject itemPower = objectManager.MakeObj("ItemPower");
+                itemPower.transform.position = transform.position;
+                //Instantiate(itemPower, transform.position, itemPower.transform.rotation);
             }
             else if (ran < 10) //20%
             {
                 //폭탄
-                Instantiate(itemBoom, transform.position, itemBoom.transform.rotation);
+                GameObject itemBoom = objectManager.MakeObj("ItemBoom");
+                itemBoom.transform.position = transform.position;
+                //Instantiate(itemBoom, transform.position, itemBoom.transform.rotation);
             }
 
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            //Destroy(gameObject);
             
         }
     }
@@ -124,12 +139,14 @@ public class Enemy : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Border Bullet")
-            Destroy(gameObject);    
+            gameObject.SetActive(false);
+        //Destroy(gameObject);    
         else if(collision.gameObject.tag == "PlayerBullet")
         {
             Bullet bullet = collision.gameObject.GetComponent<Bullet>(); 
             OnHit(bullet.dmg);
-            Destroy(collision.gameObject);
+            gameObject.SetActive(false);
+            //Destroy(collision.gameObject);
 
         }
             

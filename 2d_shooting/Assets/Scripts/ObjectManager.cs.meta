@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+guid: eb91261ca7c126d4e80c227734f3f578
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - enemyLPrefab: {fileID: 1620631201162197570, guid: 5e2e47675875235488e6e9826dc38609,
+      type: 3}
+  - enemyMPrefab: {fileID: 4273434773402969044, guid: 9792b2d721798af499b2a8c701f099cc,
+      type: 3}
+  - enemySPrefab: {fileID: 5004387230393950684, guid: d2106832dbbe0364e9221275f1773906,
+      type: 3}
+  - itemCoinPrefab: {fileID: 7276621905164920302, guid: 800c6111ac7c15540a31b0bb318de8d6,
+      type: 3}
+  - itemPowerPrefab: {fileID: 4432290240239023088, guid: fdc27f7a20cb82744973684f6b2f1011,
+      type: 3}
+  - itemBoomPrefab: {fileID: 2702497711327123985, guid: 67052f621b2a98f4b9ad6b4ec86fa041,
+      type: 3}
+  - BulletPlayerAPrefab: {fileID: 5444725937488592013, guid: 3615dc6406783644ea6b2da243047023,
+      type: 3}
+  - BulletPlayerBPrefab: {fileID: 6010415613442865123, guid: 8281eeee1ae88bb4f99b9c694abff65b,
+      type: 3}
+  - BulletEnemyAPrefab: {fileID: 6010415613442865123, guid: 3923b654da7de0440901d481c7f6b2c0,
+      type: 3}
+  - BulletEnemyBPrefab: {fileID: 6010415613442865123, guid: 909c39f07b751d2458a93c1755a7679c,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
