@@ -391,7 +391,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: -8461514266414155272, guid: b9889a1e8a548d844b46bee7287797f8,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1391,7 +1391,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: -8461514266414155272, guid: b9889a1e8a548d844b46bee7287797f8,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2522,7 +2522,7 @@ MonoBehaviour:
   curShotDelay: 0
   bulletObjA: {fileID: 5444725937488592013, guid: 3615dc6406783644ea6b2da243047023,
     type: 3}
-  bulletObjB: {fileID: 6010415613442865123, guid: 909c39f07b751d2458a93c1755a7679c,
+  bulletObjB: {fileID: 6010415613442865123, guid: 8281eeee1ae88bb4f99b9c694abff65b,
     type: 3}
   boomEffect: {fileID: 1915879332}
   gameManager: {fileID: 822202472}
@@ -2766,7 +2766,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: -8461514266414155272, guid: b9889a1e8a548d844b46bee7287797f8,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

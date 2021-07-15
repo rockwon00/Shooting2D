@@ -47,15 +47,17 @@ public class Player : MonoBehaviour
 
     void Boom()
     {
-        if (!Input.GetButton("Fire2"))
+        if (!Input.GetButton("Fire2")) //Fire2버튼을 누르지 않았으면 리턴
             return;
-        if (isBoomTime)
+        if (isBoomTime) //폭탄이 터지고 있는 중이면 리턴
             return;
-        if (boom == 0)
+        if (boom == 0) //폭탄이 없으면 리턴
             return;
 
         boom--;
         isBoomTime = true;
+
+
         gameManager.UpdateBoomIcon(boom);
 
         boomEffect.SetActive(true);
@@ -72,7 +74,7 @@ public class Player : MonoBehaviour
         GameObject[] bullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
         for (int index = 0; index < bullets.Length; index++)
         {
-            gameObject.SetActive(false);
+            bullets[index].SetActive(false);
             //Destroy(bullets[index]);
         }
     }
@@ -226,7 +228,7 @@ public class Player : MonoBehaviour
                     break;
                     
             }
-            gameObject.SetActive(false);
+            collision.gameObject.SetActive(false);
             //Destroy(collision.gameObject);
         }
     }

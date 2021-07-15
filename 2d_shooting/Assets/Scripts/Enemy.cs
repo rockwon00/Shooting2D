@@ -88,8 +88,11 @@ public class Enemy : MonoBehaviour
     public void OnHit(int dmg)
     {
         health -= dmg;
-        spriteRenderer.sprite = sprites[1];
-        Invoke("ReturnSprite", 0.1f);
+        if (health > 0)
+        {
+            spriteRenderer.sprite = sprites[1];
+            Invoke("ReturnSprite", 0.1f);
+        }
 
         if(health <= 0)
         {
@@ -145,7 +148,7 @@ public class Enemy : MonoBehaviour
         {
             Bullet bullet = collision.gameObject.GetComponent<Bullet>(); 
             OnHit(bullet.dmg);
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
             //Destroy(collision.gameObject);
 
         }
