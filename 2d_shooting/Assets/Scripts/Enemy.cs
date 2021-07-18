@@ -33,6 +33,23 @@ public class Enemy : MonoBehaviour
         //rigid.velocity = Vector2.down * speed;
     }
 
+    void OnEnable()
+    {
+        switch (enemyName)
+        {
+            case "L":
+            health = 40;
+                break;
+            case "M":
+            health = 10;
+                break;
+            case "S":
+            health = 3;
+                break;
+
+        }
+    }
+
     void Update()
     {
         Fire();
@@ -111,6 +128,8 @@ public class Enemy : MonoBehaviour
                 //코인
                 GameObject itemCoin = objectManager.MakeObj("ItemCoin");
                 itemCoin.transform.position = transform.position;
+                //Rigidbody2D rigid = itemCoin.GetComponent<Rigidbody2D>();
+                //rigid.velocity = Vector2.down * 1.5f;
                 //Instantiate(itemCoin, transform.position, itemCoin.transform.rotation);
             }
             else if (ran < 8) //20%
@@ -118,6 +137,8 @@ public class Enemy : MonoBehaviour
                 //파워
                 GameObject itemPower = objectManager.MakeObj("ItemPower");
                 itemPower.transform.position = transform.position;
+                //Rigidbody2D rigid = itemPower.GetComponent<Rigidbody2D>();
+                //rigid.velocity = Vector2.down * 1.5f;
                 //Instantiate(itemPower, transform.position, itemPower.transform.rotation);
             }
             else if (ran < 10) //20%
@@ -125,10 +146,13 @@ public class Enemy : MonoBehaviour
                 //폭탄
                 GameObject itemBoom = objectManager.MakeObj("ItemBoom");
                 itemBoom.transform.position = transform.position;
+                //Rigidbody2D rigid = itemBoom.GetComponent<Rigidbody2D>();
+                //rigid.velocity = Vector2.down * 1.5f;
                 //Instantiate(itemBoom, transform.position, itemBoom.transform.rotation);
             }
 
             gameObject.SetActive(false);
+            transform.rotation = Quaternion.identity;
             //Destroy(gameObject);
             
         }
@@ -142,17 +166,21 @@ public class Enemy : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Border Bullet")
-            gameObject.SetActive(false);
-        //Destroy(gameObject);    
-        else if(collision.gameObject.tag == "PlayerBullet")
         {
-            Bullet bullet = collision.gameObject.GetComponent<Bullet>(); 
+            gameObject.SetActive(false);
+            transform.rotation = Quaternion.identity; //각도를 원래대로 돌려놓는다
+        }
+        //Destroy(gameObject);    
+        else if (collision.gameObject.tag == "PlayerBullet")
+        {
+            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
             OnHit(bullet.dmg);
-            //gameObject.SetActive(false);
+            bullet.gameObject.SetActive(false);
             //Destroy(collision.gameObject);
 
         }
             
 
     }
+
 }

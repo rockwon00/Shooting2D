@@ -63,20 +63,68 @@ public class Player : MonoBehaviour
         boomEffect.SetActive(true);
         Invoke("OffBoomEffect", 4f);
         //적 제거
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        for (int index = 0; index < enemies.Length; index++)
+        //아래의 Find함수는 부하를 일으킬 수 있음
+        //GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy"); 
+        GameObject[] enemiesL = objectManager.GetPool("EnemyL");
+        GameObject[] enemiesM = objectManager.GetPool("EnemyM");
+        GameObject[] enemiesS = objectManager.GetPool("EnemyS");
+
+        /*for (int index = 0; index < enemies.Length; index++)
         {
             Enemy enemyLogic = enemies[index].GetComponent<Enemy>();
             enemyLogic.OnHit(1000); ;
-
         }
+        */
+
+        for (int index = 0; index < enemiesL.Length; index++)
+        {
+            if (enemiesL[index].activeSelf)
+            {
+                Enemy enemyLogic = enemiesL[index].GetComponent<Enemy>();
+                enemyLogic.OnHit(1000);
+            }
+        }
+        for (int index = 0; index < enemiesM.Length; index++)
+        {
+            if (enemiesM[index].activeSelf)
+            {
+                Enemy enemyLogic = enemiesM[index].GetComponent<Enemy>();
+                enemyLogic.OnHit(1000);
+            }
+        }
+        for (int index = 0; index < enemiesS.Length; index++)
+        {
+            if (enemiesS[index].activeSelf)
+            {
+                Enemy enemyLogic = enemiesS[index].GetComponent<Enemy>();
+                enemyLogic.OnHit(1000);
+            }
+        }
+
         //총알 제거
-        GameObject[] bullets = GameObject.FindGameObjectsWithTag("EnemyBullet");
-        for (int index = 0; index < bullets.Length; index++)
+        //GameObject[] bullets = GameObject.FindGameObjectsWithTag("EnemyBullet");     
+        /*for (int index = 0; index < bullets.Length; index++)
         {
             bullets[index].SetActive(false);
             //Destroy(bullets[index]);
+        }*/
+        GameObject[] bulletPlayerA = objectManager.GetPool("BulletPlayerA");
+        GameObject[] bulletPlayerB = objectManager.GetPool("BulletPlayerB");
+        for (int index = 0; index < bulletPlayerA.Length; index++)
+        {
+            if (bulletPlayerA[index].activeSelf)
+            {
+                bulletPlayerA[index].SetActive(false);
+            }
         }
+        for (int index = 0; index < bulletPlayerB.Length; index++)
+        {
+            if (bulletPlayerB[index].activeSelf)
+            {
+                bulletPlayerB[index].SetActive(false);
+            }
+        }
+
     }
 
     void Fire()
