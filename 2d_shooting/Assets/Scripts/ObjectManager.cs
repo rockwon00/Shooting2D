@@ -14,6 +14,7 @@ public class ObjectManager : MonoBehaviour
     public GameObject BulletPlayerBPrefab;
     public GameObject BulletEnemyAPrefab;
     public GameObject BulletEnemyBPrefab;
+    public GameObject BulletFollowerPrefab;
 
     GameObject[] enemyL;
     GameObject[] enemyM;
@@ -27,10 +28,11 @@ public class ObjectManager : MonoBehaviour
     GameObject[] bulletPlayerB;
     GameObject[] bulleteEnemyA;
     GameObject[] bulleteEnemyB;
+    GameObject[] bulletFollowerPrefab;
 
     GameObject[] targetPool;
 
-    private void Awake()
+    void Awake()
     {
         enemyL = new GameObject[10];
         enemyM = new GameObject[10];
@@ -44,6 +46,7 @@ public class ObjectManager : MonoBehaviour
         bulletPlayerB = new GameObject[100];
         bulleteEnemyA = new GameObject[100];
         bulleteEnemyB = new GameObject[100];
+        bulletFollowerPrefab = new GameObject[100];
 
         Generate();
     }
@@ -106,6 +109,12 @@ public class ObjectManager : MonoBehaviour
             bulleteEnemyB[index].SetActive(false);
         }
 
+        for (int index = 0; index < bulletFollowerPrefab.Length; index++)
+        {
+            bulletFollowerPrefab[index] = Instantiate(BulletFollowerPrefab);
+            bulletFollowerPrefab[index].SetActive(false);
+        }
+
     }
 
     public GameObject MakeObj(string type)
@@ -141,6 +150,9 @@ public class ObjectManager : MonoBehaviour
                 break;
             case "BulleteEnemyB":
                 targetPool = bulleteEnemyB;
+                break;
+            case "BulletFollowerPrefab":
+                targetPool = bulletFollowerPrefab;
                 break;
         }
 
@@ -188,6 +200,9 @@ public class ObjectManager : MonoBehaviour
                 break;
             case "BulleteEnemyB":
                 targetPool = bulleteEnemyB;
+                break;
+            case "BulletFollowerPrefab":
+                targetPool = bulletFollowerPrefab;
                 break;
         }
         return targetPool;
