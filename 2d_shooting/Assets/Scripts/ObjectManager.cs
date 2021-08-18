@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObjectManager : MonoBehaviour
 {
+    public GameObject enemyBPrefab;
     public GameObject enemyLPrefab;
     public GameObject enemyMPrefab;
     public GameObject enemySPrefab;
@@ -15,7 +16,11 @@ public class ObjectManager : MonoBehaviour
     public GameObject BulletEnemyAPrefab;
     public GameObject BulletEnemyBPrefab;
     public GameObject BulletFollowerPrefab;
+    public GameObject BulletBossAPrefab;
+    public GameObject BulletBossBPrefab;
+    public GameObject ExplosionPrefab;
 
+    GameObject[] enemyB ;
     GameObject[] enemyL;
     GameObject[] enemyM;
     GameObject[] enemyS;
@@ -29,11 +34,15 @@ public class ObjectManager : MonoBehaviour
     GameObject[] bulleteEnemyA;
     GameObject[] bulleteEnemyB;
     GameObject[] bulletFollowerPrefab;
+    GameObject[] bulletBossAPrefab;
+    GameObject[] bulletBossBPrefab;
+    GameObject[] explosionBPrefab;
 
     GameObject[] targetPool;
 
     void Awake()
     {
+        enemyB = new GameObject[1];
         enemyL = new GameObject[10];
         enemyM = new GameObject[10];
         enemyS = new GameObject[20];
@@ -47,6 +56,9 @@ public class ObjectManager : MonoBehaviour
         bulleteEnemyA = new GameObject[100];
         bulleteEnemyB = new GameObject[100];
         bulletFollowerPrefab = new GameObject[100];
+        bulletBossAPrefab = new GameObject[50];
+        bulletBossBPrefab = new GameObject[50];
+        explosionBPrefab = new GameObject[20];
 
         Generate();
     }
@@ -54,6 +66,12 @@ public class ObjectManager : MonoBehaviour
     void Generate()
     {
         //#. Enemy
+        for (int index = 0; index < enemyB.Length; index++)
+        {
+            enemyB[index] = Instantiate(enemyBPrefab);
+            enemyB[index].SetActive(false);
+        }
+
         for (int index = 0; index < enemyL.Length; index++)
         {
             enemyL[index] = Instantiate(enemyLPrefab);
@@ -115,12 +133,33 @@ public class ObjectManager : MonoBehaviour
             bulletFollowerPrefab[index].SetActive(false);
         }
 
+        for (int index = 0; index < bulletBossAPrefab.Length; index++)
+        {
+            bulletBossAPrefab[index] = Instantiate(BulletBossAPrefab);
+            bulletBossAPrefab[index].SetActive(false);
+        }
+
+        for (int index = 0; index < bulletBossBPrefab.Length; index++)
+        {
+            bulletBossBPrefab[index] = Instantiate(BulletBossBPrefab);
+            bulletBossBPrefab[index].SetActive(false);
+        }
+
+        for (int index = 0; index < explosionBPrefab.Length; index++)
+        {
+            explosionBPrefab[index] = Instantiate(ExplosionPrefab);
+            explosionBPrefab[index].SetActive(false);
+        }
+
     }
 
     public GameObject MakeObj(string type)
     {
         switch (type)
         {
+            case "EnemyB":
+                targetPool = enemyB;
+                break;
             case "EnemyL":
                 targetPool = enemyL;
                 break;
@@ -154,6 +193,15 @@ public class ObjectManager : MonoBehaviour
             case "BulletFollowerPrefab":
                 targetPool = bulletFollowerPrefab;
                 break;
+            case "BulletBossAPrefab":
+                targetPool = bulletBossAPrefab;
+                break;
+            case "BulletBossBPrefab":
+                targetPool = bulletBossBPrefab;
+                break;
+            case "ExplosionPrefab":
+                targetPool = explosionBPrefab;
+                break;
         }
 
         for (int index = 0; index < targetPool.Length; index++)
@@ -171,6 +219,9 @@ public class ObjectManager : MonoBehaviour
     {
         switch (type)
         {
+            case "EnemyB":
+                targetPool = enemyB ;
+                break;
             case "EnemyL":
                 targetPool = enemyL;
                 break;
@@ -203,6 +254,15 @@ public class ObjectManager : MonoBehaviour
                 break;
             case "BulletFollowerPrefab":
                 targetPool = bulletFollowerPrefab;
+                break;
+            case "BulletBossAPrefab":
+                targetPool = bulletBossAPrefab;
+                break;
+            case "BulletBossBPrefab":
+                targetPool = bulletBossBPrefab;
+                break;
+            case "ExplosionPrefab":
+                targetPool = explosionBPrefab;
                 break;
         }
         return targetPool;

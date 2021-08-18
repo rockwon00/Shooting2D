@@ -27,7 +27,7 @@ public class gamemanager : MonoBehaviour
     void Awake()
     {
         spawnList = new List<Spawn>();
-        enemyObjs = new string[] { "EnemyS", "EnemyM", "EnemyL" };
+        enemyObjs = new string[] { "EnemyS", "EnemyM", "EnemyL","EnemyB" };
         ReadSpawnFile();
     }
 
@@ -83,6 +83,7 @@ public class gamemanager : MonoBehaviour
         int enemyIndex = 0;
         switch (spawnList[spawnIndex].type)
         {
+            
             case "S":
                 enemyIndex = 0;
                 break;
@@ -91,6 +92,9 @@ public class gamemanager : MonoBehaviour
                 break;
             case "L":
                 enemyIndex = 2;
+                break;
+            case "B":
+                enemyIndex = 3;
                 break;
         }
         //int ranEnemy = Random.Range(0, 3);
@@ -102,6 +106,7 @@ public class gamemanager : MonoBehaviour
         Rigidbody2D rigid = enemy.GetComponent<Rigidbody2D>();
         Enemy enemyLogic = enemy.GetComponent<Enemy>();
         enemyLogic.player = player; //적 생성이 된 직후이기 때문에 플레이어 변수를 넘겨주는것이 가능함 
+        enemyLogic.gamemanager = this;
         enemyLogic.objectManager = objectManager;
 
         if (enemyPoint == 5 || enemyPoint == 6)
@@ -173,6 +178,15 @@ public class gamemanager : MonoBehaviour
 
         Player playerLogic = player.GetComponent<Player>();
         playerLogic.isHit = false;
+    }
+
+    public void CallExplosion(Vector3 pos, string type)
+    {
+        GameObject explosion = objectManager.MakeObj("Explosion");
+        Explosion explosionLogic = explosion.GetComponent<Explosion>();
+
+        explosion.transform.position = pos;
+        explosionLogic.StartExplosion(type);
     }
 
     public void GameOver()
