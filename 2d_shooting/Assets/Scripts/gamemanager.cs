@@ -182,7 +182,7 @@ public class gamemanager : MonoBehaviour
 
     public void CallExplosion(Vector3 pos, string type)
     {
-        GameObject explosion = objectManager.MakeObj("Explosion");
+        GameObject explosion = objectManager.MakeObj("ExplosionPrefab");
         Explosion explosionLogic = explosion.GetComponent<Explosion>();
 
         explosion.transform.position = pos;
