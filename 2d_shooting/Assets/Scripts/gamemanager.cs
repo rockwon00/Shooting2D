@@ -7,6 +7,12 @@ using System.IO; //파일을 읽기 위한 라이브러리 추가
 
 public class gamemanager : MonoBehaviour
 {
+    public int stage;
+    public Animator stageAnim;
+    public Animator clearAnim;
+    public Animator fadeAnim;
+    public Transform playerPos;
+
     public string[] enemyObjs;
     public Transform[] spawnPoints;
 
@@ -28,7 +34,40 @@ public class gamemanager : MonoBehaviour
     {
         spawnList = new List<Spawn>();
         enemyObjs = new string[] { "EnemyS", "EnemyM", "EnemyL","EnemyB" };
+        StageStart();
+    }
+
+    public void StageStart()
+    {
+        //#.Stage UI Load 
+        stageAnim.SetTrigger("On");
+        stageAnim.GetComponent<Text>().text = "Stage " + stage + "\nStart";
+        clearAnim.GetComponent<Text>().text = "Stage " + stage + "\nClear";
+        //#.Enemy Spawn File Read
         ReadSpawnFile();
+
+        //#.Fade In
+        fadeAnim.SetTrigger("In");
+
+    }
+
+    public void StageEnd()
+    {
+        //#.Clear UI Load
+        clearAnim.SetTrigger("On");
+
+        //#.Fade Out
+        fadeAnim.SetTrigger("Out");
+
+        //#.Player Repos
+        player.transform.position = playerPos.position;
+
+        //#.Stage Increament
+        stage++;
+        if (stage > 2)
+            Invoke("GameOver", 6);
+        else
+            Invoke("StageStart", 5);
     }
 
     void ReadSpawnFile()
@@ -39,7 +78,7 @@ public class gamemanager : MonoBehaviour
         spawnEnd = false;
 
         //리스폰 파일 읽기
-        TextAsset textFile = Resources.Load("Spawn") as TextAsset;
+        TextAsset textFile = Resources.Load("Stage "+ stage) as TextAsset;
         StringReader stringReader = new StringReader(textFile.text);
 
         while (stringReader != null)

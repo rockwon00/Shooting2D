@@ -75,8 +75,9 @@
     <Compile Include="Assets\Scripts\Spawn.cs" />
     <Compile Include="Assets\Scripts\gamemanager.cs" />
     <Compile Include="Assets\Vertical 2D Shooting BE4\ReadMe\Scripts\ReadmeBE4.cs" />
-    <None Include="Assets\Resources\Spawn.txt" />
-    <None Include="Assets\Resources\Spawn_11.txt" />
+    <None Include="Assets\Resources\Stage 2.txt" />
+    <None Include="Assets\Resources\Stage 1.txt" />
+    <None Include="Assets\Resources\Stage_BACK.txt" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.18f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
