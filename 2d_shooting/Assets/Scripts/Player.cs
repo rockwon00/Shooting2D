@@ -93,6 +93,9 @@ public class Player : MonoBehaviour
              return;
         isButtonB = false;
 
+
+
+
         if (isBoomTime) //폭탄이 터지고 있는 중이면 리턴
             return;
         if (boom == 0) //폭탄이 없으면 리턴

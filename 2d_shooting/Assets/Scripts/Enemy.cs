@@ -79,6 +79,8 @@ public class Enemy : MonoBehaviour
     }
 
     void Think()
+
+
     {
         patternIndex = patternIndex == 3 ? 0 : patternIndex + 1;
         curPatternCount = 0;
@@ -101,7 +103,7 @@ public class Enemy : MonoBehaviour
 
     void FireFoward()
     {
-        //Debug.Log("앞으로 4발 발사.");
+        Debug.Log("앞으로 4발 발사.");
         GameObject bulletR = objectManager.MakeObj("BulletBossAPrefab");
         bulletR.transform.position = transform.position + Vector3.right * 0.3f;
         GameObject bulletRR = objectManager.MakeObj("BulletBossAPrefab");
@@ -131,7 +133,7 @@ public class Enemy : MonoBehaviour
 
     void FireShot()
     {
-        //Debug.Log("플레이어 방향으로 샷건.");
+        Debug.Log("플레이어 방향으로 샷건.");
         for (int index = 0; index < 5; index++)
         {
             GameObject bullet = objectManager.MakeObj("BulleteEnemyB");
@@ -160,9 +162,9 @@ public class Enemy : MonoBehaviour
         bullet.transform.position = transform.position;
         bullet.transform.rotation = Quaternion.identity;
         Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
-        Vector2 dirVec = new Vector2(Mathf.Sin(Mathf.PI*2*curPatternCount/maxPatternCount[patternIndex]),-1);
+        Vector2 dirVec = new Vector2(Mathf.Cos(Mathf.PI*10*curPatternCount/maxPatternCount[patternIndex]),-1);
  
-        rigid.AddForce(dirVec.normalized * 5, ForceMode2D.Impulse);
+        rigid.AddForce(dirVec.normalized * 4, ForceMode2D.Impulse);
 
 
         curPatternCount++;
@@ -177,7 +179,7 @@ public class Enemy : MonoBehaviour
     {
         Debug.Log("원 형태로 전체 공격.");
 
-        int roundNumA = 50;
+        int roundNumA = 100;
         int roundNumB = 40;
         int roundNum = curPatternCount%2 ==0? roundNumA : roundNumB;
 
@@ -188,8 +190,8 @@ public class Enemy : MonoBehaviour
             bullet.transform.rotation = Quaternion.identity;
 
             Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
-            Vector2 dirVec = new Vector2(Mathf.Sin(Mathf.PI * 2 * index / roundNum), 
-                                         Mathf.Cos(Mathf.PI * 2 * index / roundNum));
+            Vector2 dirVec = new Vector2(Mathf.Sin(Mathf.PI * 5 * index / roundNum), 
+                                         Mathf.Cos(Mathf.PI * 5 * index / roundNum));
 
             rigid.AddForce(dirVec.normalized * 2, ForceMode2D.Impulse);
 
@@ -202,17 +204,17 @@ public class Enemy : MonoBehaviour
         curPatternCount++;
 
         if (curPatternCount < maxPatternCount[patternIndex])
-            Invoke("FireAround", 0.7f);
+            Invoke("FireAround", 0.1f);
         else
-            Invoke("Think", 3);
+            Invoke("Think", 1);
     }
 
     void Update()
     {
-        if (enemyName == "B")
-            return;
-        Fire();
-        Reload();
+        if (enemyName == "B") 
+            return; 
+            Fire();
+            Reload(); 
     }
 
     void Fire()
@@ -314,10 +316,12 @@ public class Enemy : MonoBehaviour
                 //Instantiate(itemBoom, transform.position, itemBoom.transform.rotation);
             }
 
+
             gameObject.SetActive(false);
+            
             transform.rotation = Quaternion.identity;
             gamemanager.CallExplosion(transform.position, enemyName);
-            //Destroy(gameObject);
+            Destroy(gameObject);
 
             //#.Boss Kill
             if (enemyName == "B")
@@ -343,6 +347,9 @@ public class Enemy : MonoBehaviour
         {
             Bullet bullet = collision.gameObject.GetComponent<Bullet>();
             OnHit(bullet.dmg);
+
+
+
             bullet.gameObject.SetActive(false);
             //Destroy(collision.gameObject);
 

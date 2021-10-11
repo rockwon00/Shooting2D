@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
-  health: 3000
+  health: 500
   sprites: []
   enemyName: B
   enemyScore: 5000
@@ -145,11 +145,12 @@ MonoBehaviour:
   itemBoom: {fileID: 0}
   player: {fileID: 0}
   objectManager: {fileID: 0}
+  gamemanager: {fileID: 0}
   maxShotDelay: 0
   curShotDelay: 0
   patternIndex: -1
   curPatternCount: 0
-  maxPatternCount: 0200000003000000630000000a000000
+  maxPatternCount: 020000000300000003000000c8000000
 --- !u!50 &8345940242486664976
 Rigidbody2D:
   serializedVersion: 4
